@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 
-    <title>Hello, world!</title>
+    <title>GastroMe - Dashboard</title>
 </head>
 
 <body>
@@ -25,18 +25,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a class="nav-link pointer" onclick='window.location.href = "index.html" + $(location).attr("hash")'><i class="fas fa-chart-line"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user-edit"></i> Mein Restaurant</a>
+                    <a class="nav-link pointer" onclick='window.location.href = "restaurant.html" + $(location).attr("hash")'><i class="fas fa-user-edit"></i> Mein Restaurant</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bars"></i> Speisekarte
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#"><i class="fas fa-mug-hot"></i> Getränke bearbeiten</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-pizza-slice"></i> Speisen bearbeiten</a>
+                        <a class="dropdown-item pointer" onclick='window.location.href = "drink.html" + $(location).attr("hash")'><i class="fas fa-mug-hot"></i> Getränke bearbeiten</a>
+                        <a class="dropdown-item pointer" onclick='window.location.href = "food.html" + $(location).attr("hash")'><i class="fas fa-pizza-slice"></i> Speisen bearbeiten</a>
                     </div>
                 </li>
             </ul>
@@ -56,7 +56,7 @@
                         <table class="table" id="tischTable">
                             <thead>
                                 <tr id="tischTableThead">
-                                    <th>Nummer</th>
+                                    <th class="d-none">Nummer</th>
                                     <th>Beschreibung</th>
                                     <th>Gäste</th>
                                     <th>Rechnungsbetrag</th>
@@ -78,7 +78,7 @@
                         <table class="table" id="getraenkeTableThead">
                             <thead>
                                 <tr>
-                                    <th>Tisch-Nr.</th>
+                                    <th class="d-none">Tisch-Nr.</th>
                                     <th>Tisch-Beschreibung</th>
                                     <th>Getränk</th>
                                     <th>Preis</th>
@@ -99,7 +99,7 @@
                         <table class="table" id="kellnerTable">
                             <thead id="kellnerTableThead">
                                 <tr>
-                                    <th>Tisch-Nr.</th>
+                                    <th class="d-none">Tisch-Nr.</th>
                                     <th>Tisch-Beschreibung</th>
                                     <th>Status</th>
                                 </tr>

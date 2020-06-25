@@ -1,0 +1,29 @@
+.pointer {
+    cursor: pointer;
+}
+
+.input-group-text{
+    min-width: 40pt;
+}
+
+.big-icon {
+    font-size: 18pt;
+}
+
+.w-40 {
+    width: 40pt;
+}
+
+.h-30 {
+    height: 30pt;
+}
+
+#restaurantCardImage{
+    height: 380px;
+    object-fit: cover;
+}
+
+#restaurantBeschreibungInput{
+    min-height: 50pt;
+    max-height: 200pt;
+}

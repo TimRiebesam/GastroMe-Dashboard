@@ -1,29 +1,44 @@
 $(function () {
-    loadData();
-    setInterval(function () {
-        loadData();
-    }, 10000);
+    switch (document.title) {
+        case dashboardTitle:
+            loadDataIntoDashboardView();
+            setInterval(function () {
+                loadDataIntoDashboardView();
+            }, 10000);
+            break;
+        case restaurantViewTitle:
+            loadDataIntoRestaurantView();
+            break;
+        case foodViewTitle:
+            break;
+        case drinkViewTitle:
+            break;
+        default:
+            break;
+    }
 });
 
-function loadData() {
+function getRestaurantId() {
     var hash = $(location).attr('hash').replace("#", "");
     if (hash != "")
-        loadDataIntoView(hash);
+        return hash;
+    else if (currentRestaurant != null)
+        return currentRestaurant.id;
     else
         $('#errorMessageBox').html('<i class="fas fa-exclamation-triangle"></i> Bitte geben Sie hinter der URL das Nummern-Zeichen (#) gefolgt von der Restaurant-ID an!');
 }
 
-function loadDataIntoView(hash) {
-    getData("restaurant/" + hash).then(data => {
-        currentRestaurant = data;
-        clearTable();
+function loadDataIntoDashboardView() {
+    getData("restaurant/" + getRestaurantId()).then(restaurant => {
+        currentRestaurant = restaurant;
+        clearDashboardTable();
 
-        if (currentRestaurant.id === hash) {
+        if (currentRestaurant.id) {
             $('#restaurantName').html(currentRestaurant.name);
 
             currentRestaurant.tische.forEach(tisch => {
                 $('#tischTableTbody').append('<tr id="tischTableTr_tisch_' + tisch.id + '"></tr>');
-                $('#tischTableTr_tisch_' + tisch.id).append('<td>' + tisch.id + '</td>');
+                $('#tischTableTr_tisch_' + tisch.id).append('<td class="d-none">' + tisch.id + '</td>');
                 $('#tischTableTr_tisch_' + tisch.id).append('<td>' + tisch.beschreibung + '</td>');
                 $('#tischTableTr_tisch_' + tisch.id).append('<td>' + tisch.gaeste.length + '</td>');
 
@@ -31,7 +46,7 @@ function loadDataIntoView(hash) {
                     $('#tischTableTr_tisch_' + tisch.id).append('<td>' + calculateRechnungssumme(rechnung) + '</td>');
                     rechnung.getraenkOrders.forEach(order => {
                         $('#getraenkeTableTbody').append('<tr id="getraenkeTableTr_order_' + order.id + '"></tr>');
-                        $('#getraenkeTableTr_order_' + order.id).append('<td>' + tisch.id + '</td>');
+                        $('#getraenkeTableTr_order_' + order.id).append('<td class="d-none">' + tisch.id + '</td>');
                         $('#getraenkeTableTr_order_' + order.id).append('<td>' + tisch.beschreibung + '</td>');
                         $('#getraenkeTableTr_order_' + order.id).append('<td>' + order.getraenk.name + '</td>');
                         $('#getraenkeTableTr_order_' + order.id).append('<td>' + numberToPrice(order.getraenk.preis) + '</td>');
@@ -43,7 +58,7 @@ function loadDataIntoView(hash) {
 
                 if (tisch.kellnerGerufen) {
                     $('#kellnerTableTbody').append('<tr id="kellnerTableTr_tisch_' + tisch.id + '"></tr>');
-                    $('#kellnerTableTr_tisch_' + tisch.id).append('<td>' + tisch.id + '</td>');
+                    $('#kellnerTableTr_tisch_' + tisch.id).append('<td class="d-none">' + tisch.id + '</td>');
                     $('#kellnerTableTr_tisch_' + tisch.id).append('<td>' + tisch.beschreibung + '</td>');
                     $('#kellnerTableTr_tisch_' + tisch.id).append('<td class="text-success" id="kellnerTableTr_tisch_' + tisch.id + '_kellerTd"><div class="btn btn-success" onclick="acceptKellnerCall(\'' + tisch.id + '\')">Annehmen</div></td>');
                 }
@@ -52,8 +67,34 @@ function loadDataIntoView(hash) {
     });
 }
 
-function clearTable(){
+function clearDashboardTable() {
     $('#tischTableTbody').empty();
     $('#getraenkeTableTbody').empty();
     $('#kellnerTableTbody').empty();
+}
+
+function loadDataIntoRestaurantView() {
+    getData("restaurant/" + getRestaurantId()).then(restaurant => {
+        currentRestaurant = restaurant;
+        
+        $('#restaurantName').html(currentRestaurant.name);
+        
+        $('#restaurantCardImage').attr('src', 'data:image/png;base64,' + currentRestaurant.bild);
+        $('#restaurantCardTitle').html(currentRestaurant.name);
+        $('#restaurantCardText').html(restaurant.beschreibung);
+        
+        $('#restaurantNameInput').val(currentRestaurant.name);
+        $('#restaurantBeschreibungInput').val(currentRestaurant.beschreibung);
+        $('#restaurantEmailInput').val(currentRestaurant.email);
+        $('#restaurantPlzInput').val(currentRestaurant.standort.plz.plz);
+        $('#restaurantStrasseInput').val(currentRestaurant.standort.strasse);
+        $('#restaurantHausnummerInput').val(currentRestaurant.standort.hausnummer);
+        
+        $('#restaurantTischTbody').empty();
+        restaurant.tische.forEach(tisch => {
+           $('#restaurantTischTbody').append('<tr id="restaurantTischTbody_tr_' + tisch.id + '"></tr>');
+            $('#restaurantTischTbody_tr_' + tisch.id).append('<td><input type="text" class="form-control" id="restaurantTable_' + tisch.id + '_Input" value="' + tisch.beschreibung + '"></td>');
+            $('#restaurantTischTbody_tr_' + tisch.id).append('<td class="w-40"><i class="fas fa-minus-circle text-danger big-icon mt-1 pointer"></i></td>');
+        });
+    });
 }
