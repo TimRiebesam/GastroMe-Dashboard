@@ -54,7 +54,7 @@
 
                 <hr class="mt-4 mb-4">
 
-                <form class="col-12">
+                <form class="col-12" id="restaurantForm">
                     <div class="form-row align-items-center">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -78,6 +78,12 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-city"></i></div>
                             </div>
+                            <input type="text" class="form-control" id="restaurantStadtInput" placeholder="Stadt">
+                        </div>
+                        <div class="input-group mt-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-mail-bulk"></i></div>
+                            </div>
                             <input type="text" class="form-control" id="restaurantPlzInput" placeholder="PLZ">
                         </div>
                         <div class="input-group mt-2">
@@ -97,7 +103,7 @@
                             <label class="custom-file-label" for="restaurantBildInput">Neues Bild hochladen</label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-4">Aktualisieren <i class="fas fa-chevron-right ml-2"></i></button>
+                        <button onclick="sendRestaurantData()" class="btn btn-primary mt-4">Aktualisieren <i class="fas fa-chevron-right ml-2"></i></button>
                     </div>
                 </form>
                     
@@ -107,7 +113,7 @@
                     <h5 class="mt-5">Tische:</h5>
                     <div class="row ml-auto mt-5 mr-4">
                         <input type="text" class="col form-control" id="restaurantTableNewInput" placeholder="Tisch Beschreibung">
-                        <button class="btn btn-success ml-2">
+                        <button class="btn btn-success ml-2" onclick="addTisch()">
                             <i class="fas fa-plus-circle mr-1"></i>
                             Tisch hinzufügen
                         </button>
@@ -142,6 +148,7 @@
     <script src="assets/js/app/dataFetcher.js"></script>
     <script src="assets/js/app/helper.js"></script>
     <script src="assets/js/app/loadData.js"></script>
+    <script src="assets/js/app/sendData.js"></script>
 </body>
 
 </html>

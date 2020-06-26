@@ -18,6 +18,10 @@
     height: 30pt;
 }
 
+.opacity-7{
+    opacity: .7;
+}
+
 #restaurantCardImage{
     height: 380px;
     object-fit: cover;

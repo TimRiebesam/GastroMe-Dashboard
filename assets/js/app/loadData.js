@@ -76,25 +76,38 @@ function clearDashboardTable() {
 function loadDataIntoRestaurantView() {
     getData("restaurant/" + getRestaurantId()).then(restaurant => {
         currentRestaurant = restaurant;
-        
+
         $('#restaurantName').html(currentRestaurant.name);
-        
+
         $('#restaurantCardImage').attr('src', 'data:image/png;base64,' + currentRestaurant.bild);
         $('#restaurantCardTitle').html(currentRestaurant.name);
         $('#restaurantCardText').html(restaurant.beschreibung);
-        
+
         $('#restaurantNameInput').val(currentRestaurant.name);
         $('#restaurantBeschreibungInput').val(currentRestaurant.beschreibung);
         $('#restaurantEmailInput').val(currentRestaurant.email);
         $('#restaurantPlzInput').val(currentRestaurant.standort.plz.plz);
         $('#restaurantStrasseInput').val(currentRestaurant.standort.strasse);
         $('#restaurantHausnummerInput').val(currentRestaurant.standort.hausnummer);
-        
+
         $('#restaurantTischTbody').empty();
         restaurant.tische.forEach(tisch => {
-           $('#restaurantTischTbody').append('<tr id="restaurantTischTbody_tr_' + tisch.id + '"></tr>');
-            $('#restaurantTischTbody_tr_' + tisch.id).append('<td><input type="text" class="form-control" id="restaurantTable_' + tisch.id + '_Input" value="' + tisch.beschreibung + '"></td>');
-            $('#restaurantTischTbody_tr_' + tisch.id).append('<td class="w-40"><i class="fas fa-minus-circle text-danger big-icon mt-1 pointer"></i></td>');
+            addTischToTable(tisch);
         });
     });
+}
+
+function addTischToTable(tisch) {
+    $('#restaurantTischTbody').append('<tr id="restaurantTischTbody_tr_' + tisch.id + '"></tr>');
+    $('#restaurantTischTbody_tr_' + tisch.id).append('<td><input type="text" onchange="updateTischInput(this)" class="form-control" id="restaurantTable_' + tisch.id + '_Input" value="' + tisch.beschreibung + '"></td>');
+    $('#restaurantTischTbody_tr_' + tisch.id).append('<td class="w-40 opacity-7"><i class="fas fa-check-circle text-success big-icon mt-1"></i></td>');
+    $('#restaurantTischTbody_tr_' + tisch.id).append('<td class="w-40"><i class="fas fa-minus-circle text-danger big-icon mt-1 pointer" onclick="deleteTisch(\'' + tisch.id + '\')"></i></td>');
+}
+
+function updateTischInput(tischInput) {
+    tischInput.parentElement.parentElement.children[1].classList.remove("opacity-7");
+    tischInput.parentElement.parentElement.children[1].classList.add("pointer");
+    tischInput.parentElement.parentElement.children[1].onclick = function () {
+        updateTisch(tischInput.parentElement.parentElement.id.split("_")[2]);
+    };
 }

@@ -12,3 +12,10 @@ function calculateRechnungssumme(rechnung) {
 function numberToPrice(number) {
     return number.toFixed(2).toString().replace(".", ",") + " €";
 }
+
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
