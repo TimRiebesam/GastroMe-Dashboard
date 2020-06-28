@@ -126,9 +126,9 @@ function showQrCode(tischId, tischBeschreibung){
 }
 
 function updateTischInput(tischInput) {
-    tischInput.parentElement.parentElement.children[1].classList.remove("opacity-7");
-    tischInput.parentElement.parentElement.children[1].classList.add("pointer");
-    tischInput.parentElement.parentElement.children[1].onclick = function () {
+    tischInput.parentElement.parentElement.children[2].classList.remove("opacity-7");
+    tischInput.parentElement.parentElement.children[2].classList.add("pointer");
+    tischInput.parentElement.parentElement.children[2].onclick = function () {
         updateTisch(tischInput.parentElement.parentElement.id.split("_")[2]);
     };
 }

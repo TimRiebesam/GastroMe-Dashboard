@@ -42,8 +42,8 @@ function deleteTisch(tischId){
 function updateTisch(tischId){
     patchData("tisch/" + tischId, $('#restaurantTable_' + tischId + '_Input').val()).then(tisch => {
         $('#restaurantTable_' + tischId + '_Input').val(tisch.beschreibung);
-        $('#restaurantTable_' + tischId + '_Input').parent().parent().children()[1].classList.add("opacity-7");
-        $('#restaurantTable_' + tischId + '_Input').parent().parent().children()[1].classList.remove("pointer");
+        $('#restaurantTable_' + tischId + '_Input').parent().parent().children()[2].classList.add("opacity-7");
+        $('#restaurantTable_' + tischId + '_Input').parent().parent().children()[2].classList.remove("pointer");
     });
 }
 
