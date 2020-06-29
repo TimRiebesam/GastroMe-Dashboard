@@ -1,3 +1,6 @@
+//Autor: Tim Riebesam
+//Klasse die Umgebungsvariablen zum Betrieb der Seite beinhaltet.
+
 var dashboardTitle = "GastroMe - Dashboard";
 var restaurantViewTitle = "GastroMe - Restaurant";
 var foodViewTitle = "GastroMe - Foods";

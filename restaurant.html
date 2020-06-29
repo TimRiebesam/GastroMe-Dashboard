@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <!-- Autor: Tim Riebesam -->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,7 +22,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -44,6 +44,7 @@
         <h4 class="ml-auto" id="restaurantName">Restaurant-Name</h4>
     </nav>
 
+   <!-- Page -->
     <div class="container mt-5 mb-5">
         <h1 class="mb-5 text-danger" id="errorMessageBox"></h1>
         <div class="card ">
@@ -51,9 +52,9 @@
             <div class="card-body">
                 <h3 class="card-title" id="restaurantCardTitle"></h3>
                 <p class="card-text" id="restaurantCardText"></p>
-
                 <hr class="mt-4 mb-4">
-
+                
+                <!-- Form für die Restaurant-Daten -->
                 <form class="col-12" id="restaurantForm">
                     <div class="form-row align-items-center">
                         <div class="input-group">
@@ -109,6 +110,7 @@
 
                 <hr class="mt-5">
 
+               <!-- Übersicht Tische Restaurant und hinzufügen von Tisch -->
                 <div class="row ml-3">
                     <h5 class="mt-5">Tische:</h5>
                     <div class="row ml-auto mt-5 mr-4">
@@ -119,15 +121,14 @@
                         </button>
                     </div>
                 </div>
-
-
                 <table class="table table-borderless">
                     <tbody id="restaurantTischTbody"></tbody>
                 </table>
             </div>
         </div>
     </div>
-
+    
+    <!-- Modal um QRCodes anzuzeigen -->
     <div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModal" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">

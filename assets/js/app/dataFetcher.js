@@ -1,3 +1,7 @@
+//Autor: Tim Riebesam
+//Klasse die Methoden beinhaltet zum Datenaustausch über die gängigen HTTP-Verben.
+//Zur Verfügung stehen GET, GET(Return nicht als JSON), PATCH, PUT, POST, DELETE
+
 async function getData(url) {
     // Default options are marked with *
     const response = await fetch(gastroMeApiUrl + url, {
