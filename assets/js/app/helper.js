@@ -33,3 +33,7 @@ function validateResponse(response) {
     }
     return response;
 }
+
+function showUnderConstruction(){
+    $('#underConstruction').removeClass("d-none");
+}

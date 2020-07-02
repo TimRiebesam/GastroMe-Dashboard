@@ -3,8 +3,7 @@
 
 var dashboardTitle = "GastroMe - Dashboard";
 var restaurantViewTitle = "GastroMe - Restaurant";
-var foodViewTitle = "GastroMe - Foods";
-var drinkViewTitle = "GastroMe - Drinks";
+var speisekarteViewTitle = "GastroMe - Speisekarte";
 
 //var gastroMeApiUrl = "http://localhost:5000/"; //local
 var gastroMeApiUrl = "http://GastromeApi-prod.eba-gdpwc2as.us-east-2.elasticbeanstalk.com/"; //aws

@@ -31,3 +31,15 @@
     min-height: 50pt;
     max-height: 200pt;
 }
+
+.icon-xxl{
+    font-size: 180pt
+}
+
+.text-xxl{
+    font-size: 30pt;
+}
+
+#underConstruction {
+    margin-top: 80pt;
+}

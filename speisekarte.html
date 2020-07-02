@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Autor: Tim Riebesam -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <title>GastroMe - Speisekarte</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <a class="navbar-brand" href="#"><i class="fas fa-utensils"></i> GastroMe</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link pointer" onclick='window.location.href = "index.html" + $(location).attr("hash")'><i class="fas fa-chart-line"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pointer" onclick='window.location.href = "restaurant.html" + $(location).attr("hash")'><i class="fas fa-user-edit"></i> Mein Restaurant</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bars"></i> Speisekarte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item pointer" onclick='window.location.href = "speisekarte.html#drinks" + $(location).attr("hash")'><i class="fas fa-mug-hot"></i> Getränke bearbeiten</a>
+                        <a class="dropdown-item pointer" onclick='window.location.href = "speisekarte.html#foods" + $(location).attr("hash")'><i class="fas fa-pizza-slice"></i> Speisen bearbeiten</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <h4 class="ml-auto" id="restaurantName">Restaurant-Name</h4>
+    </nav>
+
+   <!-- Page -->
+    <div class="container mt-5 mb-5">
+        <h1 class="mb-5 text-danger" id="errorMessageBox"></h1>
+        <div id="underConstruction" class="text-warning text-center d-none">
+            <i class="fas fa-tools icon-xxl mt-5"></i>
+            <div class="mt-5 text-xxl">
+                Diese Seite befindet<br>sich noch im Aufbau...
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Eigene JS -->
+    <script src="assets/js/app/globals.js"></script>
+    <script src="assets/js/app/dataFetcher.js"></script>
+    <script src="assets/js/app/helper.js"></script>
+    <script src="assets/js/app/loadData.js"></script>
+    <script src="assets/js/app/sendData.js"></script>
+</body>
+
+</html>

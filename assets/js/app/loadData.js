@@ -16,9 +16,8 @@ $(function () {
         case restaurantViewTitle:
             loadDataIntoRestaurantView();
             break;
-        case foodViewTitle:
-            break;
-        case drinkViewTitle:
+        case speisekarteViewTitle:
+            loadDataIntoSpeisekarteView();
             break;
         default:
             break;
@@ -157,4 +156,8 @@ function updateTischInput(tischInput) {
     tischInput.parentElement.parentElement.children[2].onclick = function () {
         updateTisch(tischInput.parentElement.parentElement.id.split("_")[2]);
     };
+}
+
+function loadDataIntoSpeisekarteView(){
+    showUnderConstruction();
 }
